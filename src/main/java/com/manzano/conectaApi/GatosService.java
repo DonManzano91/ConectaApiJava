@@ -48,8 +48,49 @@ public class GatosService {
                         Image.SCALE_SMOOTH);
                 fondoGato= new ImageIcon(modificada);
             }
+
+            String menu = "Opciones: \n"
+                    + "1 Ver otra imagen \n"
+                    + "2 Marca el gato como favorito \n"
+                    + "3 Volver \n";
+
+            String[] botones = {"ver otra imagin", "favorito", "volver"};
+            String idGato = String.valueOf(gatos.getId());
+            String opcion = (String) JOptionPane.showInputDialog(
+              null,
+              menu,
+              idGato,
+              JOptionPane.INFORMATION_MESSAGE,
+                    fondoGato,
+                    botones,
+                    botones[0]
+            );
+
+            int seleccion = -1;
+            /*Validamos la opcion que eligio el usuario*/
+            for (int i = 0; i<botones.length; i++){
+                if (opcion.equals(botones[i])){
+                    seleccion = i;
+                }
+            }
+
+            switch (seleccion){
+                case 0:
+                    verGatos();
+                    break;
+                case 1:
+                    gatosFavoritos(gatos);
+                    break;
+                default:
+                    break;
+            }
+
         }catch (IOException e){
-            System.out.println("No se pudo traer la imagen del gato " + e); 
+            System.out.println("No se pudo traer la imagen del gato " + e);
         }
+    }
+
+    public static void gatosFavoritos(Gatos gatos){
+
     }
 }

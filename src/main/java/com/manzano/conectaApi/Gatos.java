@@ -2,16 +2,16 @@ package com.manzano.conectaApi;
 
 public class Gatos {
 
-    int id;
+    String id;
     String url;
     String apikey = "9c53f7b2-233c-4e8a-87d8-57400ff50d57";
     String image;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
