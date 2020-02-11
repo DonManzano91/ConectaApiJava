@@ -8,7 +8,8 @@ public class Main {
         int opcionMenu = -1;
         String[] botones = {
                 "1. Ver gatos",
-                "2. Salir"
+                "2. Ver Favoritos",
+                "3. Salir"
         };
 
         do {
@@ -32,7 +33,14 @@ public class Main {
                     GatosService.verGatos();
                     break;
                 case 1:
+                    Gatos gatos = new Gatos();
                     System.out.println("entra case 1");
+                    GatosService.verFavoritos(gatos.getApikey());
+                    break;
+                case 2 :
+                    System.out.println("entra case 2");
+                    break;
+                default:
                     break;
             }
         }while (opcionMenu!=1);

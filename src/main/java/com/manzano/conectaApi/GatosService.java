@@ -1,9 +1,7 @@
 package com.manzano.conectaApi;
 
 import com.google.gson.Gson;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.squareup.okhttp.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -90,7 +88,45 @@ public class GatosService {
         }
     }
 
-    public static void gatosFavoritos(Gatos gatos){
+    public static void gatosFavoritos(Gatos gatos) throws IOException {
+        try{
+            OkHttpClient client = new OkHttpClient();
+            MediaType mediaType = MediaType.parse("application/json");
+            RequestBody body = RequestBody.create(mediaType, "{\r\n  \"image_id\": \""+gatos.getId()+"\r\n}");
+            Request request = new Request.Builder()
+                    .url("https://api.thecatapi.com/v1/favourites")
+                    .method("POST", body)
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("x-api-key", gatos.getApikey())
+                    .build();
+            Response response = client.newCall(request).execute();
+        }catch (IOException e){
+            System.out.println(e);
+        }
+    }
 
+    public static void verFavoritos(String apikey) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("https://api.thecatapi.com/v1/favourites")
+                .method("GET", null)
+                .addHeader("x-api-key", apikey)
+                .build();
+        Response response = client.newCall(request).execute();
+        String elJson = response.body().string();
+        Gson gson = new Gson();
+
+        GatosFavoritos[] arrayGatos = gson.fromJson(elJson, GatosFavoritos[].class);
+
+        if (arrayGatos.length>0){
+            int min = 1;
+            int max = arrayGatos.length;
+            int aleatorio = (int) (Math.random()*((max-min)-1)) + min;
+            int indice = aleatorio - 1 ;
+
+            GatosFavoritos gatosFavoritos = arrayGatos[indice];
+
+            
+        }
     }
 }
