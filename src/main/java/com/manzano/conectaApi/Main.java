@@ -29,16 +29,13 @@ public class Main {
 
             switch (opcionMenu){
                 case 0:
-                    System.out.println("entra case 0");
+                    System.out.println("entra ver gatos");
                     GatosService.verGatos();
                     break;
                 case 1:
-                    Gatos gatos = new Gatos();
-                    System.out.println("entra case 1");
+                    GatosFavoritos gatos = new GatosFavoritos();
+                    System.out.println("entra ver favoritos");
                     GatosService.verFavoritos(gatos.getApikey());
-                    break;
-                case 2 :
-                    System.out.println("entra case 2");
                     break;
                 default:
                     break;

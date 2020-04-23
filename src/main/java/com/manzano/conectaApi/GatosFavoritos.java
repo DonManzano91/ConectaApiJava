@@ -3,9 +3,9 @@ package com.manzano.conectaApi;
 public class GatosFavoritos {
 
     String id;
-    String imagenId;
-    String apikey = null;
-    ImagenesFavoritas favoritosGatos;
+    String image_id;
+    String apikey = "9c53f7b2-233c-4e8a-87d8-57400ff50d57";
+    ImagenesFavoritas image;
 
     public String getId() {
         return id;
@@ -15,12 +15,12 @@ public class GatosFavoritos {
         this.id = id;
     }
 
-    public String getImagenId() {
-        return imagenId;
+    public String getImage_id() {
+        return image_id;
     }
 
-    public void setImagenId(String imagenId) {
-        this.imagenId = imagenId;
+    public void setImage_id(String image_id) {
+        this.image_id = image_id;
     }
 
     public String getApikey() {
@@ -31,11 +31,11 @@ public class GatosFavoritos {
         this.apikey = apikey;
     }
 
-    public ImagenesFavoritas getFavoritosGatos() {
-        return favoritosGatos;
+    public ImagenesFavoritas getImage() {
+        return image;
     }
 
-    public void setFavoritosGatos(ImagenesFavoritas favoritosGatos) {
-        this.favoritosGatos = favoritosGatos;
+    public void setImage(ImagenesFavoritas image) {
+        this.image = image;
     }
 }
